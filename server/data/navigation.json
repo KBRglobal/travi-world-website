@@ -1,0 +1,11 @@
+[
+  { "id": 1, "label": "Home", "href": "/", "order": 1 },
+  { "id": 2, "label": "Destinations", "href": "/destinations", "order": 2 },
+  { "id": 3, "label": "Hotels", "href": "/category/hotels", "order": 3 },
+  { "id": 4, "label": "Attractions", "href": "/category/attractions", "order": 4 },
+  { "id": 5, "label": "Dining", "href": "/category/dining", "order": 5 },
+  { "id": 6, "label": "Guides", "href": "/guides", "order": 6 },
+  { "id": 7, "label": "News", "href": "/news", "order": 7 },
+  { "id": 8, "label": "About", "href": "/about", "order": 8 },
+  { "id": 9, "label": "Contact", "href": "/contact", "order": 9 }
+]

@@ -1,0 +1,47 @@
+{
+  "hotels": {
+    "title": "Hotels",
+    "subtitle": "Find Your Perfect Stay",
+    "description": "Discover the best hotels, from luxury resorts to cozy boutique stays.",
+    "icon": "Building2",
+    "filters": ["All", "Luxury", "Boutique", "Budget", "Resort"],
+    "items": [
+      { "id": 1, "name": "Le Meurice", "location": "Paris, France", "rating": 5, "reviews": 423, "price": 850, "image": "/dest-paris.jpg", "tags": ["Luxury", "5-Star"] },
+      { "id": 2, "name": "Park Hyatt Tokyo", "location": "Tokyo, Japan", "rating": 5, "reviews": 567, "price": 800, "image": "/dest-tokyo.jpg", "tags": ["Luxury", "City View"] },
+      { "id": 3, "name": "Burj Al Arab", "location": "Dubai, UAE", "rating": 5, "reviews": 892, "price": 1500, "image": "/dest-dubai.jpg", "tags": ["Luxury", "Iconic"] },
+      { "id": 4, "name": "The Plaza", "location": "New York, USA", "rating": 5, "reviews": 734, "price": 650, "image": "/dest-newyork.jpg", "tags": ["Historic", "5-Star"] },
+      { "id": 5, "name": "Hotel Arts", "location": "Barcelona, Spain", "rating": 5, "reviews": 456, "price": 450, "image": "/dest-barcelona.jpg", "tags": ["Beach", "Modern"] },
+      { "id": 6, "name": "Park Hyatt Sydney", "location": "Sydney, Australia", "rating": 5, "reviews": 389, "price": 720, "image": "/dest-sydney.jpg", "tags": ["Harbor View", "Luxury"] }
+    ]
+  },
+  "attractions": {
+    "title": "Attractions",
+    "subtitle": "Discover Must-See Sights",
+    "description": "Explore iconic landmarks, hidden gems, and unforgettable experiences.",
+    "icon": "Compass",
+    "filters": ["All", "Landmarks", "Museums", "Nature", "Entertainment"],
+    "items": [
+      { "id": 1, "name": "Eiffel Tower", "location": "Paris, France", "rating": 4.8, "reviews": 15234, "image": "/dest-paris.jpg", "tags": ["Landmark", "Iconic"] },
+      { "id": 2, "name": "Senso-ji Temple", "location": "Tokyo, Japan", "rating": 4.9, "reviews": 12345, "image": "/dest-tokyo.jpg", "tags": ["Temple", "Historic"] },
+      { "id": 3, "name": "Burj Khalifa", "location": "Dubai, UAE", "rating": 4.8, "reviews": 9876, "image": "/dest-dubai.jpg", "tags": ["Landmark", "Views"] },
+      { "id": 4, "name": "Statue of Liberty", "location": "New York, USA", "rating": 4.7, "reviews": 18765, "image": "/dest-newyork.jpg", "tags": ["Landmark", "Historic"] },
+      { "id": 5, "name": "Sagrada Familia", "location": "Barcelona, Spain", "rating": 4.9, "reviews": 14567, "image": "/dest-barcelona.jpg", "tags": ["Architecture", "Gaudi"] },
+      { "id": 6, "name": "Sydney Opera House", "location": "Sydney, Australia", "rating": 4.8, "reviews": 11234, "image": "/dest-sydney.jpg", "tags": ["Landmark", "Architecture"] }
+    ]
+  },
+  "dining": {
+    "title": "Dining",
+    "subtitle": "Taste Local Flavors",
+    "description": "From street food to Michelin stars, savor the best culinary experiences.",
+    "icon": "UtensilsCrossed",
+    "filters": ["All", "Fine Dining", "Casual", "Street Food", "Local"],
+    "items": [
+      { "id": 1, "name": "L'Ambroisie", "location": "Paris, France", "rating": 4.9, "reviews": 567, "cuisine": "French", "price": "$$$$", "image": "/dest-paris.jpg", "tags": ["Michelin", "Fine Dining"] },
+      { "id": 2, "name": "Sukiyabashi Jiro", "location": "Tokyo, Japan", "rating": 4.9, "reviews": 892, "cuisine": "Sushi", "price": "$$$$", "image": "/dest-tokyo.jpg", "tags": ["Michelin", "Legendary"] },
+      { "id": 3, "name": "At.mosphere", "location": "Dubai, UAE", "rating": 4.8, "reviews": 1234, "cuisine": "International", "price": "$$$$", "image": "/dest-dubai.jpg", "tags": ["Views", "Luxury"] },
+      { "id": 4, "name": "Eleven Madison Park", "location": "New York, USA", "rating": 4.8, "reviews": 1456, "cuisine": "American", "price": "$$$$", "image": "/dest-newyork.jpg", "tags": ["Michelin", "Innovative"] },
+      { "id": 5, "name": "Tickets", "location": "Barcelona, Spain", "rating": 4.7, "reviews": 2345, "cuisine": "Tapas", "price": "$$$", "image": "/dest-barcelona.jpg", "tags": ["Creative", "Popular"] },
+      { "id": 6, "name": "Quay", "location": "Sydney, Australia", "rating": 4.8, "reviews": 876, "cuisine": "Australian", "price": "$$$$", "image": "/dest-sydney.jpg", "tags": ["Michelin", "Views"] }
+    ]
+  }
+}

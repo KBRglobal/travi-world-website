@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "badge": "About TRAVI",
+    "title": "We're on a Mission to Make",
+    "titleHighlight": "Travel Better",
+    "description": "TRAVI is a community-driven travel platform that helps millions of travelers discover, plan, and book their perfect trips with confidence."
+  },
+  "stats": [
+    { "value": "500K+", "label": "Monthly Travelers", "icon": "Users" },
+    { "value": "150+", "label": "Destinations", "icon": "MapPin" },
+    { "value": "10K+", "label": "Hotels Listed", "icon": "Star" },
+    { "value": "50K+", "label": "Reviews", "icon": "Heart" }
+  ],
+  "story": {
+    "title": "From a Travel Blog to a Global Community",
+    "paragraphs": [
+      "TRAVI started in 2020 when our founder, David Chen, realized how difficult it was to find authentic travel information online. Most travel sites were filled with sponsored content and generic recommendations.",
+      "What began as a personal travel blog quickly grew into a community of passionate travelers sharing their real experiences. Today, TRAVI has become one of the most trusted travel platforms, helping millions plan their perfect trips.",
+      "We believe that travel has the power to change lives, broaden perspectives, and connect people across cultures. That's why we're committed to making travel planning as seamless and enjoyable as possible."
+    ]
+  },
+  "values": [
+    { "icon": "Sparkles", "title": "Authentic Experiences", "description": "We believe in real travel experiences, not tourist traps. Our recommendations come from locals and seasoned travelers." },
+    { "icon": "Users", "title": "Community First", "description": "Our community of travelers shares honest reviews and tips, helping others make informed decisions." },
+    { "icon": "ShieldCheck", "title": "Quality Over Quantity", "description": "We carefully curate every listing and recommendation to ensure you get only the best options." },
+    { "icon": "Lightbulb", "title": "Innovation", "description": "We constantly improve our platform with new features to make travel planning easier and more enjoyable." }
+  ],
+  "team": [
+    { "name": "David Chen", "role": "Founder & CEO", "avatar": "DC", "bio": "Former travel blogger with a passion for exploring off-the-beaten-path destinations." },
+    { "name": "Sarah Mitchell", "role": "Head of Content", "avatar": "SM", "bio": "Travel writer with 10+ years of experience covering destinations worldwide." },
+    { "name": "James Cooper", "role": "Product Lead", "avatar": "JC", "bio": "Tech enthusiast focused on building intuitive travel planning tools." },
+    { "name": "Emma Wilson", "role": "Community Manager", "avatar": "EW", "bio": "Social media expert connecting travelers from around the globe." }
+  ],
+  "timeline": [
+    { "year": "2020", "title": "TRAVI Founded", "description": "Started as a small travel blog sharing authentic destination guides." },
+    { "year": "2021", "title": "Platform Launch", "description": "Launched our first travel planning platform with 50 destinations." },
+    { "year": "2022", "title": "Community Growth", "description": "Reached 100,000 active users and launched the review system." },
+    { "year": "2023", "title": "Global Expansion", "description": "Expanded to 150+ destinations across all continents." },
+    { "year": "2024", "title": "AI Integration", "description": "Introduced AI-powered travel recommendations and planning tools." },
+    { "year": "2025", "title": "Mobile App", "description": "Launched our mobile app for on-the-go travel planning." }
+  ]
+}

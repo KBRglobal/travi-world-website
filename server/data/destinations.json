@@ -1,0 +1,19 @@
+[
+  { "id": 1, "name": "Abu Dhabi", "country": "UAE", "continent": "Middle East", "image": "/dest-dubai.jpg", "rating": 4.9, "reviews": 3421, "trending": true, "description": "The UAE capital blending tradition with modern luxury." },
+  { "id": 2, "name": "Dubai", "country": "UAE", "continent": "Middle East", "image": "/dest-dubai.jpg", "rating": 4.8, "reviews": 5234, "trending": true, "description": "Iconic skyline, luxury shopping, and world-class entertainment." },
+  { "id": 3, "name": "Ras Al Khaimah", "country": "UAE", "continent": "Middle East", "image": "/dest-dubai.jpg", "rating": 4.7, "reviews": 1876, "trending": false, "description": "Nature, adventure, and authentic Arabian experiences." },
+  { "id": 4, "name": "London", "country": "UK", "continent": "Europe", "image": "/dest-london.jpg", "rating": 4.8, "reviews": 4521, "trending": true, "description": "Royal heritage meets modern culture." },
+  { "id": 5, "name": "Paris", "country": "France", "continent": "Europe", "image": "/dest-paris.jpg", "rating": 4.9, "reviews": 3847, "trending": true, "description": "The City of Light with iconic landmarks." },
+  { "id": 6, "name": "Amsterdam", "country": "Netherlands", "continent": "Europe", "image": "/dest-barcelona.jpg", "rating": 4.7, "reviews": 2134, "trending": false, "description": "Canals, culture, and vibrant city life." },
+  { "id": 7, "name": "Barcelona", "country": "Spain", "continent": "Europe", "image": "/dest-barcelona.jpg", "rating": 4.8, "reviews": 2567, "trending": false, "description": "Mediterranean charm with Gaudi architecture." },
+  { "id": 8, "name": "Rome", "country": "Italy", "continent": "Europe", "image": "/dest-rome.jpg", "rating": 4.8, "reviews": 3121, "trending": true, "description": "Eternal city with ancient history." },
+  { "id": 9, "name": "Istanbul", "country": "Turkey", "continent": "Europe", "image": "/dest-rome.jpg", "rating": 4.7, "reviews": 1987, "trending": false, "description": "Where East meets West across the Bosphorus." },
+  { "id": 10, "name": "New York", "country": "USA", "continent": "North America", "image": "/dest-newyork.jpg", "rating": 4.8, "reviews": 5678, "trending": true, "description": "The city that never sleeps." },
+  { "id": 11, "name": "Las Vegas", "country": "USA", "continent": "North America", "image": "/dest-newyork.jpg", "rating": 4.6, "reviews": 4234, "trending": true, "description": "Entertainment capital of the world." },
+  { "id": 12, "name": "Los Angeles", "country": "USA", "continent": "North America", "image": "/dest-newyork.jpg", "rating": 4.7, "reviews": 3456, "trending": false, "description": "Hollywood glamour and sunny beaches." },
+  { "id": 13, "name": "Miami", "country": "USA", "continent": "North America", "image": "/dest-newyork.jpg", "rating": 4.6, "reviews": 2876, "trending": false, "description": "Art Deco vibes and Latin flavor." },
+  { "id": 14, "name": "Tokyo", "country": "Japan", "continent": "Asia", "image": "/dest-tokyo.jpg", "rating": 4.9, "reviews": 4156, "trending": true, "description": "Ancient traditions meet cutting-edge technology." },
+  { "id": 15, "name": "Hong Kong", "country": "China", "continent": "Asia", "image": "/dest-tokyo.jpg", "rating": 4.7, "reviews": 2345, "trending": false, "description": "Skyline harbor and culinary paradise." },
+  { "id": 16, "name": "Singapore", "country": "Singapore", "continent": "Asia", "image": "/dest-tokyo.jpg", "rating": 4.8, "reviews": 3123, "trending": true, "description": "Garden city with world-class attractions." },
+  { "id": 17, "name": "Bangkok", "country": "Thailand", "continent": "Asia", "image": "/dest-bangkok.jpg", "rating": 4.6, "reviews": 3876, "trending": true, "description": "Vibrant street life and rich culture." }
+]

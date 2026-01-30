@@ -1,0 +1,28 @@
+{
+  "siteName": "TRAVI",
+  "tagline": "Your Complete Travel Guide",
+  "description": "Discover 17+ destinations, hotels, attractions, and travel guides in 30 languages.",
+  "logo": "/logos/Logotype_Primary.svg",
+  "favicon": "/favicon.svg",
+  "primaryColor": "#573CD0",
+  "accentColor": "#6443F4",
+  "company": {
+    "name": "KBR Global Creative Consulting Ltd",
+    "address": "Suite 4.3.02, Block 4, Eurotowers, Gibraltar GX11 1AA",
+    "email": "info@travi.world",
+    "phone": "+1 (555) 123-4567"
+  },
+  "social": {
+    "facebook": "https://facebook.com/travi.world",
+    "instagram": "https://instagram.com/travi.world",
+    "twitter": "https://twitter.com/traviworld",
+    "youtube": "https://youtube.com/@traviworld",
+    "linkedin": "https://linkedin.com/company/travi-world"
+  },
+  "analytics": { "gaId": "GA_MEASUREMENT_ID" },
+  "seo": {
+    "ogTitle": "TRAVI - Your Complete Travel Guide",
+    "ogDescription": "Discover 17+ destinations with expert travel guides.",
+    "ogImage": "https://travi.world/og-image.jpg"
+  }
+}

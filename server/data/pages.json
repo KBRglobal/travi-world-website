@@ -1,0 +1,40 @@
+{
+  "terms": {
+    "slug": "terms",
+    "title": "Terms & Conditions",
+    "lastUpdated": "January 1, 2026",
+    "sections": [
+      { "id": "operator", "title": "Operator / Legal Entity", "content": "TRAVI World (https://travi.world) is operated by KBR Global Creative Consulting Ltd, a private company limited by shares incorporated in Gibraltar (Company No. 125571) with its registered office at: Suite 4.3.02, Block 4, Eurotowers, Gibraltar GX11 1AA." },
+      { "id": "purpose", "title": "Purpose & Scope of Use", "content": "TRAVI World is a digital media and editorial platform dedicated to travel and tourism content. We publish travel-related news, destination guides, attraction reviews, hotel information, and curated outbound links to third-party service providers." },
+      { "id": "affiliate", "title": "Affiliate Disclosure", "content": "Some links on the Website are affiliate links. If you click an affiliate link and subsequently make a purchase or booking, we may earn a commission at no additional cost to you." },
+      { "id": "ai", "title": "AI-Generated Content", "content": "This Website operates autonomously using artificial intelligence (AI) systems. Content is automatically collected, generated, translated, and published by AI tools with limited human oversight." },
+      { "id": "conduct", "title": "User Conduct", "content": "By using the Website, you agree not to use it for any unlawful purpose, infringe intellectual property rights, interfere with the Website infrastructure, or engage in unauthorized scraping." },
+      { "id": "ip", "title": "Intellectual Property", "content": "Unless otherwise credited, all original content on the Website is the intellectual property of KBR Global Creative Consulting Ltd." },
+      { "id": "liability", "title": "Limitation of Liability", "content": "To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, consequential, or punitive damages arising from your use of the Website." },
+      { "id": "governing", "title": "Governing Law", "content": "These Terms shall be governed by and construed in accordance with the laws of Gibraltar." }
+    ]
+  },
+  "privacy": {
+    "slug": "privacy",
+    "title": "Privacy Policy",
+    "lastUpdated": "January 1, 2026",
+    "sections": [
+      { "id": "collection", "title": "Data Collection", "content": "We collect minimal personal data. When you subscribe to our newsletter, we collect your email address. We use analytics to understand site usage." },
+      { "id": "cookies", "title": "Cookies", "content": "We use essential cookies for site functionality and analytics cookies (Google Analytics) to understand how visitors use our site." },
+      { "id": "sharing", "title": "Data Sharing", "content": "We do not sell your personal data. We may share anonymized analytics data with our partners." },
+      { "id": "rights", "title": "Your Rights", "content": "You have the right to access, correct, or delete your personal data. Contact us at info@travi.world for any data requests." }
+    ]
+  },
+  "contact-faq": {
+    "slug": "contact-faq",
+    "title": "Contact FAQ",
+    "lastUpdated": "January 1, 2026",
+    "sections": [
+      { "id": "booking", "title": "How do I book a hotel through TRAVI?", "content": "Simply search for your destination, browse available hotels, and click 'Book Now' on your preferred option." },
+      { "id": "cancel", "title": "Can I cancel or modify my booking?", "content": "Yes, most bookings can be cancelled or modified. Check the cancellation policy on your booking confirmation." },
+      { "id": "review", "title": "How do I leave a review?", "content": "After your trip, you'll receive an email invitation to leave a review. You can also log into your account." },
+      { "id": "country", "title": "Is TRAVI available in my country?", "content": "TRAVI is available worldwide! We support multiple languages and currencies." },
+      { "id": "contributor", "title": "How can I become a TRAVI contributor?", "content": "We're always looking for passionate travel writers! Send us your portfolio through the contact form." }
+    ]
+  }
+}

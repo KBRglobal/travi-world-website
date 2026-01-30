@@ -1,0 +1,19 @@
+{
+  "title": "Discover Your",
+  "titleHighlight": "Next Adventure",
+  "subtitle": "Expert travel guides, honest reviews, and insider tips to transform your trips into unforgettable experiences.",
+  "searchPlaceholder": "Where do you want to go?",
+  "popularSearches": ["Paris", "Tokyo", "Bali", "Dubai"],
+  "ctaPrimary": { "label": "Start Exploring", "href": "/destinations" },
+  "ctaSecondary": { "label": "Watch Demo", "href": "#" },
+  "stats": [
+    { "value": 17, "suffix": "+", "label": "Destinations" },
+    { "value": 120, "suffix": "+", "label": "Cities" },
+    { "value": 50, "suffix": "K+", "label": "Travelers" }
+  ],
+  "slides": [
+    { "name": "Santorini", "country": "Greece", "image": "/hero-santorini.jpg", "rating": 4.9 },
+    { "name": "Kyoto", "country": "Japan", "image": "/hero-kyoto.jpg", "rating": 4.8 },
+    { "name": "Bali", "country": "Indonesia", "image": "/hero-bali.jpg", "rating": 4.7 }
+  ]
+}

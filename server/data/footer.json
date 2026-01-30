@@ -1,0 +1,41 @@
+{
+  "description": "Your complete travel guide. Discover destinations, hotels, attractions, and expert travel guides in 30 languages.",
+  "columns": [
+    {
+      "title": "Destinations",
+      "links": [
+        { "label": "Dubai", "href": "/destinations/dubai" },
+        { "label": "Paris", "href": "/destinations/paris" },
+        { "label": "Tokyo", "href": "/destinations/tokyo" },
+        { "label": "London", "href": "/destinations/london" },
+        { "label": "New York", "href": "/destinations/new york" },
+        { "label": "Barcelona", "href": "/destinations/barcelona" },
+        { "label": "Rome", "href": "/destinations/rome" },
+        { "label": "Bangkok", "href": "/destinations/bangkok" }
+      ]
+    },
+    {
+      "title": "Categories",
+      "links": [
+        { "label": "Hotels", "href": "/category/hotels" },
+        { "label": "Attractions", "href": "/category/attractions" },
+        { "label": "Dining", "href": "/category/dining" },
+        { "label": "Travel Guides", "href": "/guides" },
+        { "label": "News", "href": "/news" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About Us", "href": "/about" },
+        { "label": "Contact", "href": "/contact" },
+        { "label": "Terms & Conditions", "href": "/terms" },
+        { "label": "Privacy Policy", "href": "/privacy" }
+      ]
+    }
+  ],
+  "partners": ["Booking.com", "GetYourGuide", "Viator", "Skyscanner", "Expedia"],
+  "popularDestinations": ["Dubai", "Paris", "Tokyo", "London", "New York", "Barcelona", "Rome", "Bangkok"],
+  "copyright": "© 2026 TRAVI World. All rights reserved.",
+  "operator": "Operated by KBR Global Creative Consulting Ltd, Gibraltar (Company No. 125571)"
+}
