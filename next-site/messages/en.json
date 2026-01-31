@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "hotels": "Hotels",
+    "attractions": "Attractions",
+    "dining": "Dining",
+    "guides": "Travel Guides",
+    "news": "News",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search"
+  },
+  "hero": {
+    "badge": "17+ Destinations Worldwide",
+    "title": "Discover Your Next",
+    "titleHighlight": "Adventure",
+    "subtitle": "Expert travel guides, honest hotel reviews, and hidden gems — all in your language.",
+    "searchPlaceholder": "Where do you want to go?",
+    "searchButton": "Search",
+    "startExploring": "Start Exploring",
+    "watchDemo": "Watch Demo"
+  },
+  "stats": {
+    "countries": "Countries",
+    "guides": "Travel Guides",
+    "reviews": "Reviews"
+  },
+  "footer": {
+    "explore": "Explore",
+    "company": "Company",
+    "legal": "Legal",
+    "popularDestinations": "Popular Destinations",
+    "copyright": "© {year} Travi.world. All rights reserved."
+  }
+}

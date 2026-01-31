@@ -21,21 +21,34 @@ import {
 const languages = [
   { code: 'en', flag: '🇬🇧', name: 'English' },
   { code: 'ar', flag: '🇸🇦', name: 'العربية' },
+  { code: 'hi', flag: '🇮🇳', name: 'हिन्दी' },
+  { code: 'zh', flag: '🇨🇳', name: '中文' },
+  { code: 'ru', flag: '🇷🇺', name: 'Русский' },
+  { code: 'ur', flag: '🇵🇰', name: 'اردو' },
   { code: 'fr', flag: '🇫🇷', name: 'Français' },
   { code: 'de', flag: '🇩🇪', name: 'Deutsch' },
+  { code: 'fa', flag: '🇮🇷', name: 'فارسی' },
+  { code: 'bn', flag: '🇧🇩', name: 'বাংলা' },
+  { code: 'fil', flag: '🇵🇭', name: 'Filipino' },
   { code: 'es', flag: '🇪🇸', name: 'Español' },
-  { code: 'pt', flag: '🇵🇹', name: 'Português' },
+  { code: 'tr', flag: '🇹🇷', name: 'Türkçe' },
   { code: 'it', flag: '🇮🇹', name: 'Italiano' },
-  { code: 'nl', flag: '🇳🇱', name: 'Nederlands' },
-  { code: 'ru', flag: '🇷🇺', name: 'Русский' },
-  { code: 'zh', flag: '🇨🇳', name: '中文' },
   { code: 'ja', flag: '🇯🇵', name: '日本語' },
   { code: 'ko', flag: '🇰🇷', name: '한국어' },
-  { code: 'hi', flag: '🇮🇳', name: 'हिन्दी' },
-  { code: 'tr', flag: '🇹🇷', name: 'Türkçe' },
+  { code: 'he', flag: '🇮🇱', name: 'עברית' },
+  { code: 'pt', flag: '🇧🇷', name: 'Português' },
+  { code: 'nl', flag: '🇳🇱', name: 'Nederlands' },
   { code: 'pl', flag: '🇵🇱', name: 'Polski' },
-  { code: 'sv', flag: '🇸🇪', name: 'Svenska' },
   { code: 'th', flag: '🇹🇭', name: 'ไทย' },
+  { code: 'vi', flag: '🇻🇳', name: 'Tiếng Việt' },
+  { code: 'id', flag: '🇮🇩', name: 'Bahasa Indonesia' },
+  { code: 'ms', flag: '🇲🇾', name: 'Bahasa Melayu' },
+  { code: 'el', flag: '🇬🇷', name: 'Ελληνικά' },
+  { code: 'cs', flag: '🇨🇿', name: 'Čeština' },
+  { code: 'sv', flag: '🇸🇪', name: 'Svenska' },
+  { code: 'no', flag: '🇳🇴', name: 'Norsk' },
+  { code: 'da', flag: '🇩🇰', name: 'Dansk' },
+  { code: 'uk', flag: '🇺🇦', name: 'Українська' },
 ] as const;
 
 /* ------------------------------------------------------------------ */
@@ -56,7 +69,7 @@ const navLinks = [
 export default function Navbar({ dir = 'ltr' }: { dir?: 'ltr' | 'rtl' }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  const [selectedLang, setSelectedLang] = useState<(typeof languages)[number]>(languages[0]);
   const langRef = useRef<HTMLDivElement>(null);
 
   /* close language dropdown on outside click */
