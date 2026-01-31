@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #0f0f0f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,4 +42,78 @@ html {
 /* RTL adjustments */
 [dir="rtl"] {
   text-align: right;
+}
+
+/* ── Gradient text ─────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #573CD0 0%, #6443F4 50%, #7C63E8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Keyframe animations ───────────────────────────────────────────── */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Card hover lift ───────────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px rgba(100, 67, 244, 0.15);
 }

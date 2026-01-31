@@ -1,156 +1,366 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import {
-  Globe,
-  MapPin,
   Search,
+  MapPin,
+  ArrowRight,
   Play,
-  Plane,
-  Hotel,
-  Package,
-  SlidersHorizontal,
   Star,
-  Shield,
-  Award,
+  TrendingUp,
   Users,
-  BookOpen,
-  MessageSquare,
 } from 'lucide-react';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 /* ------------------------------------------------------------------ */
-/*  Filter pills                                                       */
+/*  Animation variants                                                 */
 /* ------------------------------------------------------------------ */
-const filters = [
-  { label: 'Flights', icon: Plane },
-  { label: 'Hotels', icon: Hotel },
-  { label: 'Pkg', icon: Package },
-  { label: 'Select', icon: SlidersHorizontal },
-] as const;
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
 
 /* ------------------------------------------------------------------ */
-/*  Stats                                                              */
+/*  Data                                                               */
 /* ------------------------------------------------------------------ */
 const stats = [
-  { value: '17+', label: 'Countries', icon: Globe },
-  { value: '500+', label: 'Guides', icon: BookOpen },
-  { value: '10K+', label: 'Reviews', icon: MessageSquare },
-] as const;
+  { value: 17, suffix: '+', label: 'Countries' },
+  { value: 500, suffix: '+', label: 'Guides' },
+  { value: 10, suffix: 'K+', label: 'Reviews' },
+];
+
+const featuredDestinations = [
+  { name: 'Santorini', country: 'Greece', image: '/hero-santorini.jpg', rating: 4.9 },
+  { name: 'Kyoto', country: 'Japan', image: '/hero-kyoto.jpg', rating: 4.8 },
+  { name: 'Bali', country: 'Indonesia', image: '/hero-bali.jpg', rating: 4.9 },
+];
+
+const popularSearches = ['Paris', 'Tokyo', 'Bali', 'Dubai'];
+
+/* ------------------------------------------------------------------ */
+/*  Animated Counter                                                   */
+/* ------------------------------------------------------------------ */
+function AnimatedCounter({
+  value,
+  suffix,
+}: {
+  value: number;
+  suffix: string;
+}) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) setIsVisible(true);
+      },
+      { threshold: 0.5 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    const duration = 2000;
+    const steps = 60;
+    const increment = value / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, [isVisible, value]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 export default function Hero({ dir = 'ltr' }: { dir?: 'ltr' | 'rtl' }) {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prev) => (prev + 1) % featuredDestinations.length,
+      );
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section
-      dir={dir}
-      className="relative overflow-hidden bg-gradient-to-br from-white via-[#573CD0]/[0.03] to-[#6443F4]/[0.06]"
-    >
-      {/* Decorative blobs */}
-      <div className="pointer-events-none absolute -top-32 end-0 h-96 w-96 rounded-full bg-[#573CD0]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 start-0 h-72 w-72 rounded-full bg-[#6443F4]/10 blur-[100px]" />
-
-      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* ---- Badge ---- */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#573CD0]/20 bg-[#573CD0]/5 px-4 py-1.5 text-sm font-medium text-[#573CD0]">
-            <Globe className="h-4 w-4" />
-            Explore the World
-          </div>
-
-          {/* ---- Heading ---- */}
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Discover Your{' '}
-            <span className="bg-gradient-to-r from-[#573CD0] to-[#6443F4] bg-clip-text text-transparent">
-              Next Adventure
-            </span>
-          </h1>
-
-          {/* ---- Subtitle ---- */}
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-500 sm:text-lg">
-            Expert travel guides, honest reviews, and insider tips to help you plan unforgettable
-            journeys across 17&nbsp;countries and counting.
-          </p>
-
-          {/* ---- Search bar ---- */}
-          <div className="mx-auto mt-8 flex max-w-xl items-center gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-lg shadow-[#573CD0]/5 transition-shadow focus-within:shadow-[#573CD0]/10 sm:p-2.5">
-            <div className="flex flex-1 items-center gap-2 ps-3">
-              <MapPin className="h-5 w-5 shrink-0 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Where do you want to go?"
-                className="w-full bg-transparent text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none sm:text-base"
-              />
-            </div>
-            <button className="inline-flex items-center gap-2 rounded-xl bg-[#573CD0] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#573CD0]/25 transition-all hover:bg-[#6443F4] hover:shadow-lg active:scale-[0.98] sm:px-6 sm:py-3">
-              <Search className="h-4 w-4" />
-              <span className="hidden sm:inline">Search</span>
-            </button>
-          </div>
-
-          {/* ---- Filter pills ---- */}
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-            {filters.map((f) => (
-              <button
-                key={f.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-medium text-gray-600 transition-all hover:border-[#573CD0]/30 hover:bg-[#573CD0]/5 hover:text-[#573CD0] sm:text-sm"
-              >
-                <f.icon className="h-3.5 w-3.5" />
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {/* ---- CTA row ---- */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="/destinations"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#573CD0] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#573CD0]/25 transition-all hover:bg-[#6443F4] hover:shadow-xl active:scale-[0.98]"
+    <section dir={dir} className="relative min-h-screen bg-white pt-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* ── Left Content ──────────────────────────────────────── */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="space-y-8"
+          >
+            {/* Badge */}
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#f5f3ff] rounded-full border border-[#e9e5ff]"
             >
-              Start Exploring
-            </a>
-            <button className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-[#573CD0]">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#573CD0]/10 text-[#573CD0]">
-                <Play className="h-4 w-4" />
+              <div className="w-2 h-2 bg-[#6443F4] rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-[#6443F4]">
+                Explore the World
               </span>
-              Watch Demo
-            </button>
-          </div>
+              <TrendingUp className="w-4 h-4 text-[#6443F4]" />
+            </motion.div>
 
-          {/* ---- Stats ---- */}
-          <div className="mx-auto mt-12 grid max-w-md grid-cols-3 gap-6 sm:max-w-lg">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="mx-auto mb-1.5 flex h-10 w-10 items-center justify-center rounded-xl bg-[#573CD0]/10 text-[#573CD0]">
-                  <s.icon className="h-5 w-5" />
+            {/* Headline */}
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-[#0f0f0f]"
+            >
+              Discover Your
+              <span className="block text-gradient">Next Adventure</span>
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg text-[#525252] max-w-lg leading-relaxed"
+            >
+              Expert travel guides, honest reviews, and insider tips to
+              transform your trips into{' '}
+              <span className="text-[#6443F4] font-medium">
+                unforgettable experiences
+              </span>
+              .
+            </motion.p>
+
+            {/* Search Bar */}
+            <motion.div variants={fadeInUp} className="relative max-w-md">
+              <div className="flex items-center bg-white rounded-2xl border border-[#e5e5e5] p-1.5 focus-within:border-[#6443F4] focus-within:ring-2 focus-within:ring-[#6443F4]/10 transition-all">
+                <div className="flex items-center flex-1 px-4">
+                  <MapPin className="w-5 h-5 text-[#a3a3a3] shrink-0 ltr:mr-3 rtl:ml-3" />
+                  <input
+                    type="text"
+                    placeholder="Where do you want to go?"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-transparent border-0 outline-none text-sm text-gray-700 placeholder:text-[#a3a3a3] focus:ring-0"
+                  />
                 </div>
-                <p className="text-xl font-bold text-gray-900 sm:text-2xl">{s.value}</p>
-                <p className="text-xs text-gray-500 sm:text-sm">{s.label}</p>
+                <button className="bg-[#6443F4] hover:bg-[#4f35c7] text-white px-5 py-2.5 rounded-xl transition-all hover:shadow-lg hover:shadow-[#6443F4]/20 flex items-center gap-2 text-sm font-medium shrink-0">
+                  <Search className="w-4 h-4" />
+                  Search
+                </button>
               </div>
-            ))}
-          </div>
 
-          {/* ---- Trust badges ---- */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400 sm:gap-6 sm:text-sm">
-            <span className="inline-flex items-center gap-1.5">
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-              <span className="font-semibold text-gray-700">4.8</span> Rating
-            </span>
-            <span className="h-4 w-px bg-gray-200" />
-            <span className="inline-flex items-center gap-1.5">
-              <Shield className="h-4 w-4 text-emerald-500" />
-              Trusted Reviews
-            </span>
-            <span className="h-4 w-px bg-gray-200" />
-            <span className="inline-flex items-center gap-1.5">
-              <Award className="h-4 w-4 text-[#573CD0]" />
-              Award Winning
-            </span>
-            <span className="h-4 w-px bg-gray-200" />
-            <span className="inline-flex items-center gap-1.5">
-              <Users className="h-4 w-4 text-sky-500" />
-              10K+ Travelers
-            </span>
-          </div>
+              {/* Quick Suggestions */}
+              <div className="flex items-center gap-2 mt-3 flex-wrap">
+                <span className="text-xs text-[#a3a3a3]">Popular:</span>
+                {popularSearches.map((city) => (
+                  <button
+                    key={city}
+                    onClick={() => setSearchQuery(city)}
+                    className="text-xs px-3 py-1 bg-[#f5f5f5] rounded-full text-[#525252] hover:bg-[#f5f3ff] hover:text-[#6443F4] transition-colors"
+                  >
+                    {city}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <button className="bg-[#6443F4] hover:bg-[#4f35c7] text-white px-6 py-3 rounded-xl font-medium transition-all hover:shadow-lg hover:shadow-[#6443F4]/20 hover:-translate-y-0.5 flex items-center gap-2">
+                Start Exploring
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button className="border-2 border-[#e5e5e5] text-[#0f0f0f] px-6 py-3 rounded-xl font-medium hover:border-[#6443F4] hover:text-[#6443F4] transition-colors flex items-center gap-2">
+                <Play className="w-4 h-4 fill-[#6443F4] text-[#6443F4]" />
+                Watch Demo
+              </button>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-wrap items-center gap-8 pt-4"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-2xl lg:text-3xl font-semibold text-gradient">
+                    <AnimatedCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                    />
+                  </div>
+                  <div className="text-sm text-[#8a8a8a]">{stat.label}</div>
+                </div>
+              ))}
+
+              <div className="h-10 w-px bg-[#e5e5e5] hidden sm:block" />
+
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2 rtl:space-x-reverse">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="w-8 h-8 rounded-full border-2 border-white bg-[#6443F4] flex items-center justify-center"
+                    >
+                      <Users className="w-3.5 h-3.5 text-white" />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-[#6443F4] text-[#6443F4]" />
+                    <span className="font-semibold text-[#0f0f0f]">4.9</span>
+                  </div>
+                  <span className="text-xs text-[#8a8a8a]">50K+ travelers</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* ── Right Content — Image Grid ─────────────────────────── */}
+          <motion.div
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            className="relative hidden lg:block"
+          >
+            <div className="relative h-[520px]">
+              {/* Main Image */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute top-0 end-0 w-[360px] h-[420px] rounded-2xl overflow-hidden shadow-xl"
+                >
+                  <img
+                    src={
+                      featuredDestinations[currentImageIndex].image
+                    }
+                    alt={featuredDestinations[currentImageIndex].name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-xs text-[#8a8a8a]">Featured</p>
+                          <p className="text-[#0f0f0f] font-medium">
+                            {featuredDestinations[currentImageIndex].name},{' '}
+                            {featuredDestinations[currentImageIndex].country}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1 bg-[#6443F4] px-2 py-1 rounded-lg">
+                          <Star className="w-3.5 h-3.5 text-white fill-white" />
+                          <span className="text-white text-sm font-medium">
+                            {featuredDestinations[currentImageIndex].rating}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Secondary Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="absolute bottom-0 start-0 w-[260px] h-[180px] rounded-xl overflow-hidden shadow-lg z-10"
+              >
+                <img
+                  src={
+                    featuredDestinations[
+                      (currentImageIndex + 1) % featuredDestinations.length
+                    ].image
+                  }
+                  alt="Next destination"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </motion.div>
+
+              {/* Floating Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="absolute top-16 start-0 bg-white rounded-xl p-4 shadow-lg border border-[#e5e5e5]"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#f5f3ff] flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-[#6443F4]" />
+                  </div>
+                  <div>
+                    <p className="text-[#0f0f0f] font-semibold">120+</p>
+                    <p className="text-xs text-[#8a8a8a]">Cities</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Image Indicators */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                {featuredDestinations.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === currentImageIndex
+                        ? 'w-6 bg-[#6443F4]'
+                        : 'w-2 bg-[#d4d4d4] hover:bg-[#a3a3a3]'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

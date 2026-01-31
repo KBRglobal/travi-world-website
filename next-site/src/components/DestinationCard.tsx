@@ -1,107 +1,184 @@
 'use client';
 
-import { Star, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from '@/i18n/navigation';
+import {
+  Star,
+  ArrowRight,
+  MapPin,
+  Heart,
+  TrendingUp,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 export interface DestinationCardProps {
-  /** URL or path to the destination image */
-  image: string;
-  /** Destination name, e.g. "Santorini" */
+  /** Destination name */
   name: string;
-  /** Country name, e.g. "Greece" */
+  /** Country name */
   country: string;
+  /** Image URL or path */
+  image: string;
   /** Average rating 0-5 */
-  rating: number;
-  /** Total review count */
-  reviewCount: number;
-  /** Starting price (display string), e.g. "$120" */
-  priceFrom: string;
-  /** Optional link target */
+  rating?: number;
+  /** Number of reviews */
+  reviewCount?: number;
+  /** Whether this destination is trending */
+  trending?: boolean;
+  /** Short tagline or description */
+  tagline?: string;
+  /** Link href */
   href?: string;
   /** RTL support */
   dir?: 'ltr' | 'rtl';
 }
 
 /* ------------------------------------------------------------------ */
-/*  Star row helper                                                    */
+/*  Animation variant                                                  */
 /* ------------------------------------------------------------------ */
-function Stars({ rating }: { rating: number }) {
-  return (
-    <span className="inline-flex items-center gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className={`h-3.5 w-3.5 ${
-            i < Math.round(rating)
-              ? 'fill-amber-400 text-amber-400'
-              : 'fill-gray-200 text-gray-200'
-          }`}
-        />
-      ))}
-    </span>
-  );
-}
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+};
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 export default function DestinationCard({
-  image,
   name,
   country,
+  image,
   rating,
   reviewCount,
-  priceFrom,
-  href = '#',
+  trending = false,
+  tagline,
+  href,
   dir = 'ltr',
 }: DestinationCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const Wrapper = href ? Link : 'div';
+  const wrapperProps = href ? { href } : {};
+
   return (
-    <a
-      href={href}
+    <motion.div
+      variants={fadeInUp}
       dir={dir}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#573CD0]/10"
+      className="group relative rounded-2xl overflow-hidden bg-white border border-[#e5e5e5] cursor-pointer"
+      whileHover={{
+        y: -8,
+        boxShadow: '0 20px 40px -12px rgba(100, 67, 244, 0.15)',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ---- Image ---- */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <img
-          src={image}
-          alt={`${name}, ${country}`}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+      {/* @ts-expect-error – conditional wrapper */}
+      <Wrapper {...wrapperProps} className="block">
+        <div className="relative aspect-[4/5] overflow-hidden">
+          <motion.img
+            src={image}
+            alt={`${name}, ${country}`}
+            className="w-full h-full object-cover"
+            animate={{ scale: isHovered ? 1.05 : 1 }}
+            transition={{ duration: 0.5 }}
+          />
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          {/* Gradient overlay */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-300 ${
+              isHovered
+                ? 'from-black/80 via-black/30'
+                : 'from-black/60 via-transparent'
+            } to-transparent`}
+          />
 
-        {/* Price tag */}
-        <div className="absolute start-3 top-3 rounded-lg bg-white/90 px-2.5 py-1 text-xs font-semibold text-[#573CD0] shadow backdrop-blur">
-          From {priceFrom}
+          {/* Trending badge */}
+          {trending && (
+            <div className="absolute top-4 start-4 flex items-center gap-1.5 px-2.5 py-1 bg-[#6443F4] rounded-lg">
+              <TrendingUp className="w-3 h-3 text-white" />
+              <span className="text-white text-xs font-medium">Trending</span>
+            </div>
+          )}
+
+          {/* Like button */}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsLiked(!isLiked);
+            }}
+            className={`absolute top-4 end-4 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              isLiked
+                ? 'bg-[#6443F4] text-white'
+                : 'bg-white/80 text-[#525252] hover:bg-white'
+            }`}
+          >
+            <Heart className={`w-4 h-4 ${isLiked ? 'fill-white' : ''}`} />
+          </motion.button>
+
+          {/* Bottom content */}
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            {/* Rating (appears on hover) */}
+            {rating != null && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{
+                  opacity: isHovered ? 1 : 0,
+                  y: isHovered ? 0 : 10,
+                }}
+                className="flex items-center gap-2 mb-2"
+              >
+                <div className="flex items-center gap-1 bg-white/90 px-2 py-0.5 rounded-lg">
+                  <Star className="w-3.5 h-3.5 fill-[#6443F4] text-[#6443F4]" />
+                  <span className="text-[#0f0f0f] text-sm font-medium">
+                    {rating}
+                  </span>
+                </div>
+                {reviewCount != null && (
+                  <span className="text-white/70 text-xs">
+                    ({reviewCount.toLocaleString()})
+                  </span>
+                )}
+              </motion.div>
+            )}
+
+            <div className="flex items-center gap-1.5 mb-1">
+              <MapPin className="w-3.5 h-3.5 text-white/70" />
+              <span className="text-white/70 text-xs">{country}</span>
+            </div>
+
+            <h3 className="text-xl font-semibold text-white mb-0.5">
+              {name}
+            </h3>
+            {tagline && (
+              <p className="text-white/60 text-sm">{tagline}</p>
+            )}
+
+            {/* Explore CTA (appears on hover) */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: isHovered ? 1 : 0,
+                y: isHovered ? 0 : 10,
+              }}
+              className="flex items-center gap-2 mt-3"
+            >
+              <span className="text-white text-sm font-medium">Explore</span>
+              <div className="w-6 h-6 rounded-full bg-[#6443F4] flex items-center justify-center">
+                <ArrowRight className="w-3 h-3 text-white" />
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Name + country (over image) */}
-        <div className="absolute inset-x-0 bottom-0 p-4">
-          <h3 className="text-lg font-bold leading-tight text-white drop-shadow-md">{name}</h3>
-          <p className="mt-0.5 text-sm text-white/80">{country}</p>
-        </div>
-      </div>
-
-      {/* ---- Details ---- */}
-      <div className="flex flex-1 flex-col justify-between gap-3 p-4">
-        {/* Rating */}
-        <div className="flex items-center gap-2">
-          <Stars rating={rating} />
-          <span className="text-xs font-medium text-gray-500">
-            {rating.toFixed(1)} ({reviewCount.toLocaleString()})
-          </span>
-        </div>
-
-        {/* CTA */}
-        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#573CD0] transition-colors group-hover:text-[#6443F4]">
-          Explore
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
-        </span>
-      </div>
-    </a>
+      </Wrapper>
+    </motion.div>
   );
 }

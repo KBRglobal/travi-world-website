@@ -1,248 +1,308 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useLocale } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import {
+  Globe,
+  MapPin,
+  BookOpen,
+  Building2,
+  Camera,
+  Utensils,
   Search,
   Menu,
   X,
   ChevronDown,
-  Globe,
-  MapPin,
-  Hotel,
-  Landmark,
-  UtensilsCrossed,
-  BookOpen,
   Newspaper,
 } from 'lucide-react';
-
-/* ------------------------------------------------------------------ */
-/*  Language data – 17 languages with flag emoji                      */
-/* ------------------------------------------------------------------ */
-const languages = [
-  { code: 'en', flag: '🇬🇧', name: 'English' },
-  { code: 'ar', flag: '🇸🇦', name: 'العربية' },
-  { code: 'hi', flag: '🇮🇳', name: 'हिन्दी' },
-  { code: 'zh', flag: '🇨🇳', name: '中文' },
-  { code: 'ru', flag: '🇷🇺', name: 'Русский' },
-  { code: 'ur', flag: '🇵🇰', name: 'اردو' },
-  { code: 'fr', flag: '🇫🇷', name: 'Français' },
-  { code: 'de', flag: '🇩🇪', name: 'Deutsch' },
-  { code: 'fa', flag: '🇮🇷', name: 'فارسی' },
-  { code: 'bn', flag: '🇧🇩', name: 'বাংলা' },
-  { code: 'fil', flag: '🇵🇭', name: 'Filipino' },
-  { code: 'es', flag: '🇪🇸', name: 'Español' },
-  { code: 'tr', flag: '🇹🇷', name: 'Türkçe' },
-  { code: 'it', flag: '🇮🇹', name: 'Italiano' },
-  { code: 'ja', flag: '🇯🇵', name: '日本語' },
-  { code: 'ko', flag: '🇰🇷', name: '한국어' },
-  { code: 'he', flag: '🇮🇱', name: 'עברית' },
-  { code: 'pt', flag: '🇧🇷', name: 'Português' },
-  { code: 'nl', flag: '🇳🇱', name: 'Nederlands' },
-  { code: 'pl', flag: '🇵🇱', name: 'Polski' },
-  { code: 'th', flag: '🇹🇭', name: 'ไทย' },
-  { code: 'vi', flag: '🇻🇳', name: 'Tiếng Việt' },
-  { code: 'id', flag: '🇮🇩', name: 'Bahasa Indonesia' },
-  { code: 'ms', flag: '🇲🇾', name: 'Bahasa Melayu' },
-  { code: 'el', flag: '🇬🇷', name: 'Ελληνικά' },
-  { code: 'cs', flag: '🇨🇿', name: 'Čeština' },
-  { code: 'sv', flag: '🇸🇪', name: 'Svenska' },
-  { code: 'no', flag: '🇳🇴', name: 'Norsk' },
-  { code: 'da', flag: '🇩🇰', name: 'Dansk' },
-  { code: 'uk', flag: '🇺🇦', name: 'Українська' },
-] as const;
+import { motion, AnimatePresence } from 'framer-motion';
+import { locales, localeNames, isRtl, type Locale } from '@/i18n/config';
 
 /* ------------------------------------------------------------------ */
 /*  Nav links                                                          */
 /* ------------------------------------------------------------------ */
 const navLinks = [
-  { label: 'Destinations', href: '/destinations', icon: MapPin },
-  { label: 'Hotels', href: '/hotels', icon: Hotel },
-  { label: 'Attractions', href: '/attractions', icon: Landmark },
-  { label: 'Dining', href: '/dining', icon: UtensilsCrossed },
-  { label: 'Guides', href: '/guides', icon: BookOpen },
-  { label: 'News', href: '/news', icon: Newspaper },
-] as const;
+  { name: 'Destinations', href: '/destinations' as const, icon: MapPin },
+  { name: 'Hotels', href: '/category/hotels' as const, icon: Building2 },
+  { name: 'Attractions', href: '/category/attractions' as const, icon: Camera },
+  { name: 'Dining', href: '/category/dining' as const, icon: Utensils },
+  { name: 'Guides', href: '/guides' as const, icon: BookOpen },
+  { name: 'News', href: '/news' as const, icon: Newspaper },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Locale flags (all 30 from config)                                  */
+/* ------------------------------------------------------------------ */
+const localeFlags: Record<string, string> = {
+  en: '🇬🇧', ar: '🇦🇪', hi: '🇮🇳', zh: '🇨🇳', ru: '🇷🇺', ur: '🇵🇰',
+  fr: '🇫🇷', de: '🇩🇪', fa: '🇮🇷', bn: '🇧🇩', fil: '🇵🇭', es: '🇪🇸',
+  tr: '🇹🇷', it: '🇮🇹', ja: '🇯🇵', ko: '🇰🇷', he: '🇮🇱',
+  pt: '🇧🇷', nl: '🇳🇱', pl: '🇵🇱', th: '🇹🇭', vi: '🇻🇳',
+  id: '🇮🇩', ms: '🇲🇾', el: '🇬🇷', cs: '🇨🇿', sv: '🇸🇪',
+  no: '🇳🇴', da: '🇩🇰', uk: '🇺🇦',
+};
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 export default function Navbar({ dir = 'ltr' }: { dir?: 'ltr' | 'rtl' }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<(typeof languages)[number]>(languages[0]);
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
 
-  /* close language dropdown on outside click */
+  /* scroll detection */
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  /* close menus on route change */
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsLangOpen(false);
+  }, [pathname]);
+
+  /* close lang dropdown on outside click */
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
+        setIsLangOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
+
+  const switchLocale = (newLocale: string) => {
+    router.replace(pathname || '/', { locale: newLocale as Locale });
+    setIsLangOpen(false);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <nav
-      dir={dir}
-      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* ---------- Logo ---------- */}
-        <a href="/" className="flex items-center gap-2 select-none">
-          <Globe className="h-7 w-7 text-[#573CD0]" strokeWidth={2.2} />
-          <span className="text-2xl font-extrabold tracking-tight">
-            <span className="text-[#573CD0]">TRAV</span>
-            <span className="text-[#6443F4]">I</span>
-          </span>
-        </a>
-
-        {/* ---------- Desktop links ---------- */}
-        <ul className="hidden lg:flex items-center gap-1">
-          {navLinks.map((l) => (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-[#573CD0]/5 hover:text-[#573CD0]"
-              >
-                <l.icon className="h-4 w-4" />
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* ---------- Right section ---------- */}
-        <div className="flex items-center gap-2">
-          {/* Search icon */}
-          <button
-            aria-label="Search"
-            className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-[#573CD0]"
-          >
-            <Search className="h-5 w-5" />
-          </button>
-
-          {/* Language selector (desktop) */}
-          <div ref={langRef} className="relative hidden sm:block">
-            <button
-              onClick={() => setLangOpen((v) => !v)}
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:border-[#573CD0]/30 hover:text-[#573CD0]"
-            >
-              <span>{selectedLang.flag}</span>
-              <span className="hidden md:inline">{selectedLang.name}</span>
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform ${langOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-
-            {langOpen && (
-              <div className="absolute end-0 top-full mt-2 w-52 rounded-xl border border-gray-100 bg-white py-2 shadow-lg ring-1 ring-black/5 animate-in fade-in slide-in-from-top-2 z-50">
-                <div className="max-h-72 overflow-y-auto">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setSelectedLang(lang);
-                        setLangOpen(false);
-                      }}
-                      className={`flex w-full items-center gap-2.5 px-4 py-2 text-sm transition-colors hover:bg-[#573CD0]/5 ${
-                        selectedLang.code === lang.code
-                          ? 'bg-[#573CD0]/5 font-semibold text-[#573CD0]'
-                          : 'text-gray-700'
-                      }`}
-                    >
-                      <span className="text-base">{lang.flag}</span>
-                      <span>{lang.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile hamburger */}
-          <button
-            aria-label="Menu"
-            onClick={() => setMobileOpen((v) => !v)}
-            className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-[#573CD0] lg:hidden"
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* ---------- Mobile slide-out ---------- */}
-      {/* Overlay */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity lg:hidden ${
-          mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        onClick={() => setMobileOpen(false)}
-      />
-
-      {/* Panel */}
-      <div
-        className={`fixed inset-y-0 ${
-          dir === 'rtl' ? 'left-0' : 'right-0'
-        } z-50 w-72 transform bg-white shadow-2xl transition-transform duration-300 lg:hidden ${
-          mobileOpen
-            ? 'translate-x-0'
-            : dir === 'rtl'
-              ? '-translate-x-full'
-              : 'translate-x-full'
+    <>
+      <motion.nav
+        dir={dir}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-sm'
+            : 'bg-transparent'
         }`}
       >
-        <div className="flex h-16 items-center justify-between border-b border-gray-100 px-5">
-          <span className="text-lg font-bold text-[#573CD0]">Menu</span>
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="rounded-full p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
-
-        <ul className="space-y-1 px-3 py-4">
-          {navLinks.map((l) => (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-[#573CD0]/5 hover:text-[#573CD0]"
-              >
-                <l.icon className="h-5 w-5" />
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Language list (mobile) */}
-        <div className="border-t border-gray-100 px-3 py-4">
-          <p className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-gray-400">
-            Language
-          </p>
-          <div className="max-h-48 overflow-y-auto">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  setSelectedLang(lang);
-                  setMobileOpen(false);
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <motion.img
+                src="/logos/Logotype_Primary.svg"
+                alt="TRAVI"
+                className="h-8 w-auto"
+                whileHover={{ scale: 1.02 }}
+                onError={(e) => {
+                  // Fallback if SVG logo not found
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML =
+                    '<span class="text-2xl font-extrabold"><span class="text-[#573CD0]">TRAV</span><span class="text-[#6443F4]">I</span></span>';
                 }}
-                className={`flex w-full items-center gap-2.5 rounded-lg px-4 py-2 text-sm transition-colors hover:bg-[#573CD0]/5 ${
-                  selectedLang.code === lang.code
-                    ? 'font-semibold text-[#573CD0]'
-                    : 'text-gray-600'
-                }`}
-              >
-                <span>{lang.flag}</span>
-                <span>{lang.name}</span>
-              </button>
-            ))}
+              />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      active
+                        ? 'text-[#573CD0] bg-[#573CD0]/10'
+                        : 'text-gray-600 hover:text-[#573CD0] hover:bg-[#573CD0]/5'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Right Side */}
+            <div className="hidden lg:flex items-center gap-3">
+              {/* Language Selector */}
+              <div className="relative" ref={langRef}>
+                <button
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-gray-600 hover:text-[#573CD0] hover:bg-[#573CD0]/5 transition-colors"
+                >
+                  <Globe className="w-4 h-4" />
+                  <span>{localeFlags[locale] || '🌐'}</span>
+                  <span className="text-xs text-gray-400">
+                    {locale.toUpperCase()}
+                  </span>
+                  <ChevronDown
+                    className={`w-3 h-3 transition-transform ${isLangOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {isLangOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="absolute end-0 top-full mt-2 w-64 max-h-80 overflow-y-auto bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50"
+                    >
+                      <div className="px-3 py-2 text-xs font-medium text-gray-400 uppercase">
+                        {locales.length} Languages
+                      </div>
+                      {locales.map((code) => (
+                        <button
+                          key={code}
+                          onClick={() => switchLocale(code)}
+                          className={`w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
+                            locale === code
+                              ? 'text-[#573CD0] bg-[#573CD0]/5'
+                              : 'text-gray-700'
+                          }`}
+                        >
+                          <span className="text-lg">{localeFlags[code] || '🌐'}</span>
+                          <span className="flex-1 text-start">{localeNames[code]}</span>
+                          <span className="text-xs text-gray-400">
+                            {code.toUpperCase()}
+                          </span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link href="/search">
+                <button className="p-2 rounded-xl text-gray-600 hover:text-[#573CD0] hover:bg-[#573CD0]/5 transition-colors">
+                  <Search className="w-5 h-5" />
+                </button>
+              </Link>
+
+              <Link href="/newsletter">
+                <button className="bg-[#573CD0] hover:bg-[#4a32b3] text-white text-sm px-5 py-2 rounded-xl transition-all hover:shadow-lg hover:shadow-[#573CD0]/25">
+                  Subscribe
+                </button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
-      </div>
-    </nav>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-x-0 top-16 z-40 lg:hidden"
+          >
+            <div className="bg-white border-t border-gray-200 shadow-xl mx-4 rounded-2xl overflow-hidden max-h-[80vh] overflow-y-auto">
+              <div className="p-4 space-y-1">
+                {navLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  const active = isActive(link.href);
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={link.href}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                          active
+                            ? 'text-[#573CD0] bg-[#573CD0]/10'
+                            : 'text-gray-600 hover:text-[#573CD0] hover:bg-[#573CD0]/5'
+                        }`}
+                      >
+                        <Icon className="w-5 h-5" />
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+
+                {/* Mobile Language Selector */}
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="px-4 py-2 text-xs font-medium text-gray-400 uppercase">
+                    {locales.length} Languages
+                  </p>
+                  <div className="grid grid-cols-6 gap-2 px-4 py-2">
+                    {locales.map((code) => (
+                      <button
+                        key={code}
+                        onClick={() => switchLocale(code)}
+                        className={`p-2 rounded-lg text-center transition-colors ${
+                          locale === code
+                            ? 'bg-[#573CD0]/10 ring-2 ring-[#573CD0]'
+                            : 'hover:bg-gray-100'
+                        }`}
+                        title={localeNames[code]}
+                      >
+                        <span className="text-lg">
+                          {localeFlags[code] || '🌐'}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-gray-200 space-y-2">
+                  <Link href="/search" className="block">
+                    <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+                      <Search className="w-4 h-4" />
+                      Search
+                    </button>
+                  </Link>
+                  <Link href="/newsletter" className="block">
+                    <button className="w-full px-4 py-3 rounded-xl bg-[#573CD0] text-white text-sm font-medium hover:bg-[#4a32b3] transition-colors">
+                      Subscribe to Newsletter
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
