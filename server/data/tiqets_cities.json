@@ -1,0 +1,178 @@
+[
+  {
+    "id": "2d043f5b-2957-468a-b82e-1e040e3b575c",
+    "tiqets_city_id": "60013",
+    "name": "Abu Dhabi",
+    "country_name": "United Arab Emirates",
+    "is_active": true,
+    "attraction_count": 86,
+    "last_synced_at": "2026-01-06T14:39:41.787Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:39:41.787Z"
+  },
+  {
+    "id": "bb0dcfeb-a96e-4309-9971-4e6aa0d8edd2",
+    "tiqets_city_id": "75061",
+    "name": "Amsterdam",
+    "country_name": "The Netherlands",
+    "is_active": true,
+    "attraction_count": 318,
+    "last_synced_at": "2026-01-06T14:30:35.465Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:35.465Z"
+  },
+  {
+    "id": "445a727f-3a3f-4262-a328-8e732383578a",
+    "tiqets_city_id": "78586",
+    "name": "Bangkok",
+    "country_name": "Thailand",
+    "is_active": true,
+    "attraction_count": 106,
+    "last_synced_at": "2026-01-06T14:30:49.741Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:49.741Z"
+  },
+  {
+    "id": "66f2f17e-e064-4c3a-a612-559f7bd8f5ef",
+    "tiqets_city_id": "66342",
+    "name": "Barcelona",
+    "country_name": "Spain",
+    "is_active": true,
+    "attraction_count": 382,
+    "last_synced_at": "2026-01-06T14:29:17.028Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:29:17.028Z"
+  },
+  {
+    "id": "43ad64c5-ff2f-4e9d-84c1-244872514df5",
+    "tiqets_city_id": "60005",
+    "name": "Dubai",
+    "country_name": "United Arab Emirates",
+    "is_active": true,
+    "attraction_count": 296,
+    "last_synced_at": "2026-01-06T14:31:05.946Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:31:05.946Z"
+  },
+  {
+    "id": "5b2296d6-e14c-4fec-a43c-57af9d0437f3",
+    "tiqets_city_id": "34",
+    "name": "Hong Kong",
+    "country_name": "China",
+    "is_active": true,
+    "attraction_count": 13,
+    "last_synced_at": "2026-01-06T14:30:19.765Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:19.765Z"
+  },
+  {
+    "id": "f98bf689-d4d2-402c-8e81-b4faefc522a4",
+    "tiqets_city_id": "79079",
+    "name": "Istanbul",
+    "country_name": "Turkey",
+    "is_active": true,
+    "attraction_count": 138,
+    "last_synced_at": "2026-01-06T14:39:45.445Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:39:45.445Z"
+  },
+  {
+    "id": "6b8d9ee6-d71f-4410-8e14-6d4e3f4491b5",
+    "tiqets_city_id": "82073",
+    "name": "Las Vegas",
+    "country_name": "United States",
+    "is_active": true,
+    "attraction_count": 166,
+    "last_synced_at": "2026-01-06T14:29:05.606Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:29:05.606Z"
+  },
+  {
+    "id": "522f2df6-d29a-4959-8c44-52d91047067a",
+    "tiqets_city_id": "67458",
+    "name": "London",
+    "country_name": "United Kingdom",
+    "is_active": true,
+    "attraction_count": 446,
+    "last_synced_at": "2026-01-06T14:29:42.884Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:29:42.884Z"
+  },
+  {
+    "id": "c52683ec-b90f-4daf-99c1-8d210c79cbc6",
+    "tiqets_city_id": "81810",
+    "name": "Los Angeles",
+    "country_name": "United States",
+    "is_active": true,
+    "attraction_count": 130,
+    "last_synced_at": "2026-01-06T14:39:49.271Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:39:49.271Z"
+  },
+  {
+    "id": "6d5c58d3-123e-42b7-bf1e-4ba98d644f22",
+    "tiqets_city_id": "79868",
+    "name": "Miami",
+    "country_name": "United States",
+    "is_active": true,
+    "attraction_count": 129,
+    "last_synced_at": "2026-01-06T14:29:28.433Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:29:28.433Z"
+  },
+  {
+    "id": "6a06cc59-0593-4402-95a9-3700d720d826",
+    "tiqets_city_id": "260932",
+    "name": "New York",
+    "country_name": "United States",
+    "is_active": true,
+    "attraction_count": 308,
+    "last_synced_at": "2026-01-06T14:29:53.691Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:29:53.691Z"
+  },
+  {
+    "id": "b202e801-d886-4d71-b8bd-d1d781ffc16a",
+    "tiqets_city_id": "66746",
+    "name": "Paris",
+    "country_name": "France",
+    "is_active": true,
+    "attraction_count": 394,
+    "last_synced_at": "2026-01-06T14:30:05.792Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:05.792Z"
+  },
+  {
+    "id": "66d73ba4-8b42-4d8c-9cef-5bdd6871ae46",
+    "tiqets_city_id": "71631",
+    "name": "Rome",
+    "country_name": "Italy",
+    "is_active": true,
+    "attraction_count": 354,
+    "last_synced_at": "2026-01-06T14:30:17.070Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:17.070Z"
+  },
+  {
+    "id": "75b23474-1f67-4f91-9a4e-94ef8d8fdcea",
+    "tiqets_city_id": "78125",
+    "name": "Singapore",
+    "country_name": "Singapore",
+    "is_active": true,
+    "attraction_count": 120,
+    "last_synced_at": "2026-01-06T14:39:53.237Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:39:53.237Z"
+  },
+  {
+    "id": "0ed8e130-edeb-4856-a018-ee45a5c4bf17",
+    "tiqets_city_id": "72181",
+    "name": "Tokyo",
+    "country_name": "Japan",
+    "is_active": true,
+    "attraction_count": 52,
+    "last_synced_at": "2026-01-06T14:30:23.066Z",
+    "created_at": "2026-01-06T11:11:25.555Z",
+    "updated_at": "2026-01-06T14:30:23.066Z"
+  }
+]

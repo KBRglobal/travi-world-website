@@ -1,0 +1,50 @@
+[
+  {
+    "id": "428c2ff3-db8a-4274-b0ef-9cc4ca750dd3",
+    "image_url": "/hero/travi-world-mascot-canyon-viewpoint.webp",
+    "image_alt": "Travi mascot in desert with modern architecture",
+    "headline": "Explore Dubai Like a Local",
+    "headline_he": "שקופית ראשית לדוגמה 2",
+    "subheadline": "Hidden gems, insider tips, and authentic experiences await",
+    "subheadline_he": "המסע שלכם מתחיל כאן",
+    "cta_text": "Start Planning",
+    "cta_text_he": "התחילו לתכנן",
+    "cta_link": "/attractions",
+    "sort_order": 2,
+    "is_active": true,
+    "created_at": "2025-12-30T09:44:46.262Z",
+    "updated_at": "2025-12-30T14:02:07.479Z"
+  },
+  {
+    "id": "795bf479-6a0e-48da-b6fb-f921bb04da02",
+    "image_url": "/hero/travi-world-mascot-colorful-pool-arches.webp",
+    "image_alt": "Travi travel mascot at luxury rooftop pool overlooking Dubai skyline",
+    "headline": "Discover the World with Travi",
+    "headline_he": "שקופית ראשית לדוגמה 1",
+    "subheadline": "Your personal travel companion for unforgettable adventures",
+    "subheadline_he": "גלו יעדים מדהימים ברחבי העולם",
+    "cta_text": "Explore",
+    "cta_text_he": "חקרו",
+    "cta_link": "/destinations",
+    "sort_order": 1,
+    "is_active": true,
+    "created_at": "2025-12-30T09:44:46.262Z",
+    "updated_at": "2025-12-30T13:59:46.266Z"
+  },
+  {
+    "id": "aa69462f-e96c-4840-a002-8749367663fd",
+    "image_url": "/hero/travi-world-mascot-rainy-city-street-shopping.webp",
+    "image_alt": "Travi mascot with umbrella walking in snowy city street",
+    "headline": "Luxury Meets Adventure",
+    "headline_he": "שקופית ראשית לדוגמה 3",
+    "subheadline": "From world-class hotels to thrilling experiences",
+    "subheadline_he": "מצאו את חוויית הטיול המושלמת שלכם",
+    "cta_text": "Learn More",
+    "cta_text_he": "למידע נוסף",
+    "cta_link": "/hotels",
+    "sort_order": 3,
+    "is_active": true,
+    "created_at": "2025-12-30T09:44:46.262Z",
+    "updated_at": "2025-12-30T14:05:37.451Z"
+  }
+]

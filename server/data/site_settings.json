@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1b5106ac-1ad0-488b-9482-a7bbf36d917f",
+    "key": "autoSlug",
+    "value": true,
+    "category": "content",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.362Z"
+  },
+  {
+    "id": "61d2a62d-3616-4c81-94a4-de405ad6ea13",
+    "key": "autoSave",
+    "value": true,
+    "category": "content",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.364Z"
+  },
+  {
+    "id": "f1188dd9-ac46-4921-8007-9280a3c89103",
+    "key": "aiSuggestions",
+    "value": true,
+    "category": "content",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.367Z"
+  },
+  {
+    "id": "b6180437-99cf-4e07-a90c-e9667e3ec06e",
+    "key": "emailNotifications",
+    "value": false,
+    "category": "notifications",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.371Z"
+  },
+  {
+    "id": "3c9d1d2a-2d7f-4b3f-ae38-cef6143d0e87",
+    "key": "browserNotifications",
+    "value": false,
+    "category": "notifications",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.374Z"
+  },
+  {
+    "id": "225cf3b9-6e4e-4c5b-9a9b-f76861ab883d",
+    "key": "sessionTimeout",
+    "value": true,
+    "category": "security",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.377Z"
+  },
+  {
+    "id": "4b3e86c3-178a-4d0f-9e41-acc3fbcb940b",
+    "key": "contactAddress",
+    "value": "EUROTOWERS SUITE 4.3.02, BLOCK 4 GX11 1AA GIBRALTAR",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.320Z"
+  },
+  {
+    "id": "4b9f2aee-4b0b-4c21-9d21-16185e9dd60e",
+    "key": "contactEmail",
+    "value": "traviquackson@gmail.com",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.323Z"
+  },
+  {
+    "id": "ca33cdc2-557e-41e3-815d-2ce371e45030",
+    "key": "contactPhone",
+    "value": "+971559627997",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.326Z"
+  },
+  {
+    "id": "34b3459e-fe46-478b-9942-081f74e4453b",
+    "key": "defaultMetaDescription",
+    "value": "Discover the world with Travi's expert travel guides and cultural insights. Honest, in-depth information from local insiders covering destinations, culture, and practical travel advice worldwide.",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.339Z"
+  },
+  {
+    "id": "1ddee9bb-f930-4cbf-89d0-6808feeb6598",
+    "key": "defaultMetaTitle",
+    "value": "Travi - Expert Travel Guides & Cultural Insights",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.343Z"
+  },
+  {
+    "id": "5f28fa87-10f2-43ab-8833-5989051c704b",
+    "key": "googleAnalyticsId",
+    "value": "G-MJ10R3CF8F",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.346Z"
+  },
+  {
+    "id": "eed1e9fb-8cb6-4e85-a0d3-b31ebadf1bd8",
+    "key": "siteTagline",
+    "value": "Discover the World Like a Local",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.352Z"
+  },
+  {
+    "id": "62ad6a7d-715e-412d-b36f-bf774484b736",
+    "key": "gygAffiliateId",
+    "value": "",
+    "category": "api",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.355Z"
+  },
+  {
+    "id": "819534f8-59c9-433a-aae3-d07620bba3a2",
+    "key": "bookingAffiliateId",
+    "value": "",
+    "category": "api",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.358Z"
+  },
+  {
+    "id": "95a9d9c4-7c55-435e-a074-e487f221ed2d",
+    "key": "socialLinks",
+    "value": [
+      {
+        "url": "https://www.instagram.com/travi_world?igsh=MXJjNzUyd3FneXlrMA==",
+        "icon": "",
+        "isActive": true,
+        "platform": "instegram"
+      },
+      {
+        "url": "https://www.tiktok.com/@travi.world?_r=1&_t=ZS-92YVBsJ5cSi",
+        "icon": "",
+        "isActive": true,
+        "platform": "tiktok"
+      }
+    ],
+    "category": "site",
+    "description": null,
+    "updated_by": null,
+    "updated_at": "2025-12-26T18:47:16.877Z"
+  },
+  {
+    "id": "f24aaa71-a2e0-4f69-9151-fb43b0692f0f",
+    "key": "siteName",
+    "value": "travi",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.299Z"
+  },
+  {
+    "id": "8fa34e87-f6ad-444b-b15b-fe4c297c0d30",
+    "key": "siteUrl",
+    "value": "https://travi.world",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.308Z"
+  },
+  {
+    "id": "64162a73-88f2-4556-a6eb-e9c63b3dcdf8",
+    "key": "defaultLanguage",
+    "value": "English",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.311Z"
+  },
+  {
+    "id": "92be69fa-7452-42c3-a572-e26ab09fff42",
+    "key": "maintenanceMessage",
+    "value": "🛠️ We're currently improving Travi!\n\nOur travel guides will be back online shortly with fresh content and enhanced features.\n\nFollow us on Instagram @travi_world for real-time updates.\n\nThank you for your patience! ✈️",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.349Z"
+  },
+  {
+    "id": "39fb34e1-35d4-42fa-be6c-5787a48de943",
+    "key": "customFooterScripts",
+    "value": "<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-WVXXVS6L\"\nheight=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.331Z"
+  },
+  {
+    "id": "7be54199-e0aa-4f90-9392-fc2160103b54",
+    "key": "customHeadScripts",
+    "value": "<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-WVXXVS6L');</script>\n<!-- End Google Tag Manager -->\n\n<!-- JSON-LD Schema - Organization -->\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Organization\",\n  \"name\": \"Travi\",\n  \"url\": \"https://travi.world\",\n  \"logo\": {\n    \"@type\": \"ImageObject\",\n    \"url\": \"https://travi.world/assets/Logotype_Primary_1765497703861-sSZrv3wX.png\"\n  },\n  \"sameAs\": [\n    \"https://www.instagram.com/travi_world\",\n    \"https://www.tiktok.com/@travi.world\"\n  ],\n  \"description\": \"Expert travel guides and cultural insights for destinations worldwide\"\n}\n</script>\n\n<!-- JSON-LD Schema - WebSite with SearchAction -->\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"WebSite\",\n  \"name\": \"Travi\",\n  \"url\": \"https://travi.world\",\n  \"potentialAction\": {\n    \"@type\": \"SearchAction\",\n    \"target\": {\n      \"@type\": \"EntryPoint\",\n      \"urlTemplate\": \"https://travi.world/search?q={search_term_string}\"\n    },\n    \"query-input\": \"required name=search_term_string\"\n  }\n}\n</script>\n",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2025-12-26T19:38:57.337Z"
+  },
+  {
+    "id": "25b8d10b-54e9-4ba2-ac90-b8b410b95779",
+    "key": "brandDescription",
+    "value": "Travi delivers in-depth travel guides and cultural insights written by local insiders and travel journalists. Honest, comprehensive information about destinations worldwide, helping curious travelers discover authentic experiences.",
+    "category": "site",
+    "description": null,
+    "updated_by": "1c932a80-c8c1-4ca5-b4f3-de09914947ba",
+    "updated_at": "2026-01-18T15:13:48.621Z"
+  }
+]

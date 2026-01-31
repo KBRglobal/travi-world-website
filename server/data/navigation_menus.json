@@ -1,0 +1,120 @@
+{
+  "menus": [
+    {
+      "id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "name": "Main Navigation",
+      "slug": "main",
+      "location": "header",
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.932Z",
+      "updated_at": "2025-12-26T18:00:35.932Z"
+    }
+  ],
+  "items": [
+    {
+      "id": "94172aa6-828e-4af8-8e8b-9704c55f9e41",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Attractions",
+      "label_he": "אטרקציות",
+      "href": "/attractions",
+      "icon": "Camera",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 1,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.937Z"
+    },
+    {
+      "id": "23bb3f68-0181-4974-85c5-5628a3fdee1c",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Hotels",
+      "label_he": "מלונות",
+      "href": "/hotels",
+      "icon": "Building2",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 2,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.940Z"
+    },
+    {
+      "id": "1a12b21d-7a7e-4922-a836-0cb308f5aa5e",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Districts",
+      "label_he": "שכונות",
+      "href": "/districts",
+      "icon": "MapPin",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 3,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.942Z"
+    },
+    {
+      "id": "651b1758-1506-44d9-a04e-acf199815eff",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Dining",
+      "label_he": "מסעדות",
+      "href": "/dining",
+      "icon": "Utensils",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 4,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.944Z"
+    },
+    {
+      "id": "278a9c33-388c-403e-9e8d-9184f5227b72",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Shopping",
+      "label_he": "קניות",
+      "href": "/shopping",
+      "icon": "ShoppingBag",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 5,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.947Z"
+    },
+    {
+      "id": "5a25a054-ede8-4a1d-8741-be81fdf53210",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "News",
+      "label_he": "חדשות",
+      "href": "/news",
+      "icon": "Compass",
+      "open_in_new_tab": false,
+      "is_highlighted": false,
+      "highlight_style": null,
+      "sort_order": 6,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.949Z"
+    },
+    {
+      "id": "84f3ca71-c551-4342-a3e3-28f96ece5f7a",
+      "menu_id": "3d471e5f-0cbd-4cf3-b66b-b1495da5aa13",
+      "parent_id": null,
+      "label": "Real Estate",
+      "label_he": "נדל\"ן",
+      "href": "/dubai-off-plan-properties",
+      "icon": "Sparkles",
+      "open_in_new_tab": false,
+      "is_highlighted": true,
+      "highlight_style": "gradient",
+      "sort_order": 7,
+      "is_active": true,
+      "created_at": "2025-12-26T18:00:35.952Z"
+    }
+  ]
+}
